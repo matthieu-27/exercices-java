@@ -6,16 +6,16 @@ public class BaseEx3Loop {
 		
 		if(args.length <= 0){
 			
-			Scanner sc = new Scanner(System.in);
+			Scanner scan = new Scanner(System.in);
 			System.out.println("Entrez un nombre entier :");
 			
-			while(!sc.hasNextInt()){
-				sc = new Scanner(System.in);
-				System.out.println("Veuillez entrez un nombre entier");
+			while(!scan.hasNextInt()){
+				System.out.println("Veuillez entrez un nombre entier :");
+				scan.next();
 			}
 			
-			userNumber = sc.nextInt();
-			sc.close();
+			userNumber = scan.nextInt();
+			scan.close();
 			System.out.println(getResult(userNumber));
 
 		} else {
@@ -30,20 +30,13 @@ public class BaseEx3Loop {
 	}
 	
 	public static String getResult(int number) {
-		
 		String str = number + " ";
 
-		if(number >= 0) {
-			str += "est positif ";
-		}else {
-			str += "est negatif ";
-		}
+		if(number >= 0) str += "est positif ";
+		else str += "est negatif ";
 		
-		if(number % 2 == 0) {
-			str += "et pair.";
-		}else {
-			str += "et impair.";
-		}
+		if(number % 2 == 0) str += "et pair.";
+		else str += "et impair.";
 		
 		return str;
 	}
