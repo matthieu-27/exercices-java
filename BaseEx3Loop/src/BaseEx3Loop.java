@@ -4,7 +4,7 @@ public class BaseEx3Loop {
 	public static void main(String[] args) {
 		int userNumber = 0;
 		
-		if(args.length <= 0){
+		if(args.length == 0){
 			
 			Scanner scan = new Scanner(System.in);
 			System.out.println("Entrez un nombre entier :");
