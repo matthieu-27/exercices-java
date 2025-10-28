@@ -15,8 +15,8 @@ public class BaseTP1Game {
 			wantsToPlay = true;
 		}
 		
-		do {
-			int randomNumber = random.nextInt(10) + 1;
+		while (!answer.equals("non") && wantsToPlay) {
+			int randomNumber = random.nextInt(100) + 1;
 			int counter = 0;
 
 			if(!hasWon && wantsToPlay) {
@@ -35,12 +35,13 @@ public class BaseTP1Game {
 					System.out.println("Voulez vous rejouer ? (Oui/Non)");
 					Scanner nt = new Scanner(System.in);
 					answer = nt.nextLine();
+					nt.close();
 				}
 			}
-			if(!answer.equals("non")) {
+			if(!answer.toLowerCase().trim().equals("non")) {
 				hasWon = false;
 			}
-		} while (!answer.equals("non"));
+		} 
 		
 		System.out.println("Au revoir !");
 		sc.close();
