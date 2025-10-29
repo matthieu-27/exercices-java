@@ -4,7 +4,7 @@ public class BaseEx4Array {
 	
 	static ArrayList<Double> examNotes = new ArrayList<>();
 	public static ArrayList<String> studentList = new ArrayList<>();
-	public static ArrayList<Double> studentNotesList = new ArrayList<>();
+	public static Object[][] studentNotesList;
 
 	
 	public static void main(String[] args) {
