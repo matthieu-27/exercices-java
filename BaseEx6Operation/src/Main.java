@@ -7,6 +7,7 @@ public class Main {
 		System.out.println(Operation.div(5, 2));
 		System.out.println(Operation.div(5, 0));
 		buildTriangle(6);
+		makeTriangle(6);
 	}
 	
 	public static void buildTriangle(int size) {		 
@@ -17,6 +18,20 @@ public class Main {
 			for (int i = 0; i < (k*2+1); i++)
 				System.out.print("*");
 			System.out.println("");
+		}
+	}
+	
+	public static void makeTriangle(int size) {
+		for (int i = 0; i < size; i++) {
+			drawChar(size - i, ' ');
+			drawChar(i == 0 ? 1 : i*2+1, '*');
+			System.out.println();
+		}
+	}
+	
+	public static void drawChar(int size, char c) {
+		for (int i = 0; i < size; i++) {
+			System.out.print(c);
 		}
 	}
 }
