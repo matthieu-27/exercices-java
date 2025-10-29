@@ -25,7 +25,8 @@ public class Teacher {
 						studentScore.add(studentScan.nextDouble());
 					}
 				}
-				BaseEx4Array.addStudent(name);
+				BaseEx4Array.addToList(name, studentScore);
+
 				System.out.println("Moyenne :" + BaseEx4Array.getMid(BaseEx4Array.arrayListToArray(studentScore)));
 			}
 			
@@ -40,12 +41,11 @@ public class Teacher {
 				}
 			}
 			answerScan.close();
-			
 		}
 		
-		
-		studentScan.close();
 
+		studentScan.close();
+		
 	}
 	
 	
