@@ -7,13 +7,14 @@ public class Main {
 		System.out.println(searchMe.contains("beau") ? "Trouvé !" : "Pas vu !");
 		System.out.println(isPalyndrome(searchMe.toLowerCase()) ? "Palyndrome !" : "Pas un palyndrome");
 		
-		String searchMeToo = "AttxxttA";
+		String searchMeToo = "Elu par cette crapule";
 		System.out.println(isPalyndrome(searchMeToo.toLowerCase()) ? "Palyndrome !" : "Pas un palyndrome");
 
 		
 	}
 	
 	public static boolean isPalyndrome(String sentence) {
+		sentence = sentence.replace(" ", "");
 		int i = 0, j = sentence.length() - 1;
 		
 		while(i < j) {
