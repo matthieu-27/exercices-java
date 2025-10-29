@@ -1,49 +1,51 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class BaseTP1Game {
+	
+	static Scanner sc = new Scanner(System.in);
+
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		Random random = new Random();
-		String answer = "";
+		boolean wantsToPlay = true;
 
-		boolean wantsToPlay = false, hasWon = false;
+		while(wantsToPlay) {
+			System.out.println("Bonjour, voulez vous jouer avec moi ? (Oui/Non)");
+			Scanner yesNo = new Scanner(System.in);
 
-		System.out.println("Bonjour, voulez vous jouer avec moi ? (Oui/Non)");
-		
-		if(!sc.nextLine().toLowerCase().trim().equals("non")) {
-			wantsToPlay = true;
-		}
-		
-		while (!answer.equals("non") && wantsToPlay) {
-			int randomNumber = random.nextInt(100) + 1;
-			int counter = 0;
-
-			if(!hasWon && wantsToPlay) {
-				do {
-					System.out.println("Saissisez un nombre entre 1 et 100:");
-					counter++;
-					if (sc.nextInt() == randomNumber) {
-						hasWon = true;
-					} else {
-						System.out.println("Essayez encore.");
-					}
-				} while (!hasWon);
-				
-				if(hasWon) {
-					System.out.println("Bravo vous avez gagné en " + counter + " essais");
-					System.out.println("Voulez vous rejouer ? (Oui/Non)");
-					Scanner nt = new Scanner(System.in);
-					answer = nt.nextLine();
-					nt.close();
-				}
+			if(yesNo.next().equalsIgnoreCase("oui")) {
+				playGame();
+			} else {
+				wantsToPlay = false;
+				yesNo.close();
+				sc.close();
 			}
-			if(!answer.toLowerCase().trim().equals("non")) {
-				hasWon = false;
+		}
+
+		System.out.println("Au revoir :)");
+
+	}
+	
+	public static void playGame() {
+		int randomNumber = (int)(Math.random() * 100), counter = 0;
+		boolean hasWon = false;
+
+			
+		while (!hasWon) {
+			System.out.println("Saissisez un nombre entre 1 et 100:");
+			if(sc.hasNextInt()) {
+				int guess = sc.nextInt();
+				if (guess == randomNumber) {
+					hasWon = true;
+				} else {
+					System.out.print("Essayez un chiffre ");
+					System.out.println(guess > randomNumber ? "plus petit" : "plus grand");
+				} 
+			}else {
+				sc.next();
+			}
+			counter++;
+			if(hasWon) {
+				System.out.println("Bravo vous avez gagné en " + counter + " essais");
 			}
 		} 
-		
-		System.out.println("Au revoir !");
-		sc.close();
 	}
 }
