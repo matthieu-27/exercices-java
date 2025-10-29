@@ -13,22 +13,21 @@ public class Teacher {
 		if(studentScan.hasNextLine()) {
 			String input = studentScan.nextLine();
 
-			int spaceIndex = input.indexOf(" ");
-			String firstName = input.substring(0, spaceIndex);
-			String lastName = input.substring(spaceIndex + 1);
-			System.out.println("Bonjour " + firstName + " " + lastName);
-
+			String name = BaseEx4Array.getName(input);
 		
 			for(String topic: topics)
 			{
-				System.out.println("Note de " + firstName + " pour " + topic + " ?");
+				System.out.println("Note de " + name + " pour " + topic + " ?");
 				if(studentScan.hasNextDouble()) {
 					studentScore.add(studentScan.nextDouble());
 				}
 			}
-			
-			System.out.println("Moyenne :" + BaseEx4Array.getMid(studentScore));
+			BaseEx4Array.addStudent(name);
+			System.out.println("Moyenne :" + BaseEx4Array.getMid(BaseEx4Array.arrayListToArray(studentScore)));
 		}
+		
+		
+		studentScan.close();
 
 	}
 	
