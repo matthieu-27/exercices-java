@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -54,10 +53,10 @@ public class Main {
 	 * @param array a primitive integer array
 	 * @return sum of max number and next closest to him
 	 */
-	public static int sumBigestNumbers(int[] arr) {
+	public static int sumBigestNumbers(int[] array) {
 	    ArrayList<Integer> integerArray =
-	            (ArrayList<Integer>) Arrays.stream(arr).boxed().collect(Collectors.toList()); // convert primitive array to array list
-	    int max = Arrays.stream(arr).max().getAsInt(), secMax = 0; // get max value using Arrays utility class
+	            (ArrayList<Integer>) Arrays.stream(array).boxed().collect(Collectors.toList()); // convert primitive array to array list
+	    int max = Arrays.stream(array).max().getAsInt(), secMax = 0; // get max value using Arrays utility class
 	    int indexOfMax = integerArray.indexOf(max); // get index of max value
 	    integerArray.remove(indexOfMax); // remove max value from array list
 	    for(Integer i : integerArray) { // loop and find max value
@@ -65,4 +64,5 @@ public class Main {
 	    }
 	    return (int) Operation.add(max, secMax); // return casted result, because why not.
 	}
+		
 }
