@@ -23,8 +23,8 @@ public class Main {
 	
 	public static void makeTriangle(int size) {
 		for (int i = 0; i < size; i++) {
-			drawChar(size - i, ' '); // add spaces (size of the triangle first and decrement)
-			drawChar(i == 0 ? 1 : i*2+1, '*'); // draw stars (first one only on star)
+			drawChar((int)Operation.sub(size, i), ' '); // add spaces (size of the triangle first and decrement)
+			drawChar(i == 0 ? 1 : (int)Operation.add(Operation.mul(i, 2), 1), '*'); // draw stars (first one only on star)
 			System.out.println(); // goes to a new line
 		}
 	}
