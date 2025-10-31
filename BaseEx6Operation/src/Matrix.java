@@ -21,6 +21,7 @@ public class Matrix {
 		addMatrix(firstMatrix, secondMatrix);
 		addMatrix(firstMatrix, thirdMatrix);
 		subMatrix(thirdMatrix, fourthMatrix);
+		mulScalMatrix(fourthMatrix, 2);
 	}
 	
 	/*
@@ -102,33 +103,39 @@ public class Matrix {
 	 * @param matrix an integer matrix
 	 * @param factor an integer multiplicand
 	 */
-	public static void mulScalMatrix(int[][] matrix, int factor) {
-	    // check length
-	    if(matrix[0].length != matrix[1].length) {
-	    	System.out.println("Matrix must be of equal lengths!");
-	    	System.exit(0);
-	    }
-		
+	public static void mulScalMatrix(int[][] matrix, int factor) {		
 		// creates a result matrix the same size as the argument matrix
-		int[][] result = new int[matrix[0].length][matrix[1].length];
+		int[][] result = new int[matrix.length][matrix[0].length];
 		
 		// loop and multiply by factor
-		for (int i = 0; i < matrix[0].length; i++) {
-			for (int j = 0; j < matrix[1].length; j++) {
-				int temp = result[i][j];
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+				int temp = matrix[i][j];
 				result[i][j] = temp * factor;
 			}
 		}
 		
 		// prints out the result
-		System.out.println(Arrays.toString(matrix));
+		System.out.println("-----------------------------------");
+		System.out.println(factor + " *");
+		System.out.println(Arrays.deepToString(matrix));
+		System.out.println('=');
+		System.out.println(Arrays.deepToString(result));
+		System.out.println("-----------------------------------");
 
-		
 	}
 	
+	/*
+	 * Checks if two matrix are exactly the same size
+	 * 
+	 * @return true if same size, false otherwise
+	 */
 	public static boolean isEqualLength(int[][] a, int[][] b) {
-		if(a[0].length != b[0].length && a[1].length != b[1].length) {
-			return false;
+		for (int i = 0; i < a.length; i++) {
+			if(a[i].length != b[i].length) {
+				return false;
+			}
+
 		}
 		return true;
 	}
