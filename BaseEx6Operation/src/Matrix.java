@@ -6,17 +6,23 @@ public class Matrix {
 	public static void main(String[] args) {
 		int[][] firstMatrix = {{1, 2, 0, 4, 3, -1}, {5, 2, 3, 1, 3, 4}};
 		int[][] secondMatrix = {{1, 2, 0, 4, 3, -1}, {5, 2, 3, 1, 3, 4}};
-		System.out.println(Arrays.toString(addMatrix(firstMatrix)));
-		System.out.println(Arrays.toString(subMatrix(secondMatrix)));
+		System.out.println(Arrays.toString(addMatrix(firstMatrix[0], firstMatrix[1])));
+		System.out.println(Arrays.toString(subMatrix(secondMatrix[0], secondMatrix[1])));
 	}
 	
-	
-	public static int[] addMatrix(int[][] matrix) {
+	/*
+	 * This method takes 2 integer array and compute sum between a[x] and b[x]
+	 * 
+	 * @param a first integer array
+	 * @param b second integer array
+	 * @return an integer table with computed sum
+	 */
+	public static int[] addMatrix(int[] a, int[] b) {
 		// convert first and second array to ArrayList
 	    ArrayList<Integer> firstIntegerArray =
-	            (ArrayList<Integer>) Arrays.stream(matrix[0]).boxed().collect(Collectors.toList());
+	            (ArrayList<Integer>) Arrays.stream(a).boxed().collect(Collectors.toList());
 	    ArrayList<Integer> secondIntegerArray =
-	            (ArrayList<Integer>) Arrays.stream(matrix[1]).boxed().collect(Collectors.toList());
+	            (ArrayList<Integer>) Arrays.stream(b).boxed().collect(Collectors.toList());
 	    
 	    // initialize primitive integer type array that will store result
 	    int[] result = new int[firstIntegerArray.size()];
@@ -27,10 +33,17 @@ public class Matrix {
 	    return result;
 	}
 	
-	public static int[] subMatrix(int[][] matrix) {
+	/*
+	 * This method takes 2 integer array and compute difference between a[x] and b[x]
+	 * 
+	 * @param a first integer array
+	 * @param b second integer array
+	 * @return an integer table with computed difference
+	 */
+	public static int[] subMatrix(int[] a, int[] b) {
 		// convert first and second array to ArrayList
-	    ArrayList<Integer> firstIntegerArray = (ArrayList<Integer>) Arrays.stream(matrix[0]).boxed().collect(Collectors.toList());
-	    ArrayList<Integer> secondIntegerArray = (ArrayList<Integer>) Arrays.stream(matrix[1]).boxed().collect(Collectors.toList());
+	    ArrayList<Integer> firstIntegerArray = (ArrayList<Integer>) Arrays.stream(a).boxed().collect(Collectors.toList());
+	    ArrayList<Integer> secondIntegerArray = (ArrayList<Integer>) Arrays.stream(b).boxed().collect(Collectors.toList());
 	    
 	    // initialize primitive integer type array that will store result
 	    int[] result = new int[firstIntegerArray.size()];
