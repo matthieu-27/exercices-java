@@ -75,15 +75,20 @@ public class Restaurant {
         }
 
     }
-
-    public static int askUserChoice(Scanner scan) {
+	
+    public static int askUserChoice(Scanner scan, int maxOptions) {
         while (true) {
             if (scan.hasNextInt()) {
-                return scan.nextInt();
+            	int result = scan.nextInt();
+                return result > maxOptions + 1 ? maxOptions + 1 : result;
             } else {
                 System.out.println("Veuillez entrer un numéro valide");
                 scan.next();
             }
         }
+    }
+
+    public static int askUserChoice(Scanner scan) {
+    	return askUserChoice(scan, 4);
     }
 }
