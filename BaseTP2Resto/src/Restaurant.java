@@ -62,12 +62,12 @@ public class Restaurant {
         int numberOfOrders = askUserChoice(userScan);
 
         for (int order = 0; order < numberOfOrders; order++) {
-            System.out.println("\nMenu " + (order + 1) + ":");
+            System.out.println("Menu " + (order + 1) + ":");
             for (Map.Entry<String, Map<Integer, String>> category : categories.entrySet()) {
                 System.out.println("Choix " + category.getKey() + ":");
                 category.getValue().forEach((key, cat) -> System.out.print("[" + key + ": " + cat + "] "));
                 System.out.println();
-                int userChoice = askUserChoice(userScan);
+                int userChoice = askUserChoice(userScan, category.getValue().size()-1);
                 userOrders.put(category.getKey(), category.getValue().get(userChoice));
             }
             System.out.println("Récapitulatif de la commande : " + userOrders);
