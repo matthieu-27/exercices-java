@@ -56,51 +56,34 @@ public class Restaurant {
 		
 		// variable initialization
 		Scanner userScan = new Scanner(System.in);
-		Map<Integer, String> userOrders = new HashMap<>();
-		boolean orderFinished = false;
-		
-		while (!orderFinished) {
-			System.out.println("Bonjour combien de menus souhaitez vous ?");
-			while(userScan.hasNext()) {
-				
-				if(userScan.hasNextInt()) {
-					int numberOfOrders = userScan.nextInt();
-					for (int i = 1; i < numberOfOrders + 1; i++) {
-						for(Map.Entry<String, Map<Integer, String>> category: categories.entrySet()) {
-							int j = 0;
-							System.out.println("Choix " + category.getKey() + ":");
-							category.getValue().forEach((key, cat) -> System.out.print("[" + key + ": " + cat + "]"));
-							System.out.println();
-							j++;
-						}
-					}
-					
-				} else {
-					System.out.print("Veuillez entrer un numéro valide");
-					userScan.nextLine();
-				}
-			}
+        Map<String, String> userOrders = new HashMap<>();
 
-		}
-		
-		
-	}
-	
-	/*
-	 * This method wait and check if user input is an integer, ask again otherwise
-	 * 
-	 * @return an integer representing the user choice
-	 */
-	public static int askUserChoice(Scanner scan) {
-		while(scan.hasNext()) {
-			if(scan.hasNextInt()) {
-				return scan.nextInt();
-			} else {
-				System.out.print("Veuillez entrer un numéro valide");
-				scan.nextLine();
-			}
+        System.out.println("Bonjour, combien de menus souhaitez-vous ?");
+        int numberOfOrders = askUserChoice(userScan);
 
-		}
-		return 0; // fix
-	}
+        for (int order = 0; order < numberOfOrders; order++) {
+            System.out.println("\nMenu " + (order + 1) + ":");
+            for (Map.Entry<String, Map<Integer, String>> category : categories.entrySet()) {
+                System.out.println("Choix " + category.getKey() + ":");
+                category.getValue().forEach((key, cat) -> System.out.print("[" + key + ": " + cat + "] "));
+                System.out.println();
+                int userChoice = askUserChoice(userScan);
+                userOrders.put(category.getKey(), category.getValue().get(userChoice));
+            }
+            System.out.println("Récapitulatif de la commande : " + userOrders);
+
+        }
+
+    }
+
+    public static int askUserChoice(Scanner scan) {
+        while (true) {
+            if (scan.hasNextInt()) {
+                return scan.nextInt();
+            } else {
+                System.out.println("Veuillez entrer un numéro valide");
+                scan.next();
+            }
+        }
+    }
 }
