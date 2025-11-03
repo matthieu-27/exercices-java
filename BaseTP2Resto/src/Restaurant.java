@@ -89,6 +89,6 @@ public class Restaurant {
     }
 
     public static int askUserChoice(Scanner scan) {
-    	return askUserChoice(scan, 4);
+    	return askUserChoice(scan, 2147483646);
     }
 }
