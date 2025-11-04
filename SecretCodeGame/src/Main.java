@@ -14,11 +14,14 @@ public class Main {
 		Scanner userScan = new Scanner(System.in);
 		
 		System.out.println("Code tiré: " + formattedCode);
-		System.out.println("Veuillez entrer un code :");
 		int tries = 0;
 		String[] userArray = new String[codeArray.length]; 
+		System.out.println(tries == 0 ? "Veuillez entrer un code :" : "");
+		boolean gameFinished = false;
 
-		while(userScan.hasNext()) {
+		while(userScan.hasNext() && !gameFinished) {
+			System.out.println(tries == 0 ? "": "Veuillez entrer un code :");
+
 			if(userScan.hasNextInt()) {
 				String userInput = userScan.nextLine();
 				userArray = userInput.split("");
@@ -30,16 +33,22 @@ public class Main {
 			int goodAndPlaced = 0, goodAndNotPlaced = 0;
 			
 			for (int i = 0; i < codeArray.length; i++) {
-				if(codeArray[i].equals(userArray[i])) {
-					goodAndPlaced++;
-				}
-				for (int j = 0; j < codeArray.length; j++) {
-					if(codeArray[i].contains(userArray[j])) {
-						goodAndNotPlaced++;
+				if(!codeArray[i].equals(userArray[i])) {
+					if(codeArray[i].equals(userArray[i])) {
+						goodAndPlaced++;
 					}
+					for (int j = 0; j < codeArray.length; j++) {
+						if(codeArray[i].equals(userArray[j])) {
+							goodAndNotPlaced++;
+						}
+					}
+				} else {
+					System.out.println("Gagné ! gg. en " + (tries == 0 ? "1" : tries) + " coups");
+					gameFinished = true;
+					System.exit(1);
 				}
 			}
-			tries++;
+			++tries;
 			System.out.print(tries);
 			System.out.print(tries == 1 ? "er " : "ème ");
 			System.out.println("éssai:");
