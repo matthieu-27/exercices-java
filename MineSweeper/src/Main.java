@@ -1,4 +1,8 @@
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class Main {
     private static final int BOMBS = 9;
@@ -21,6 +25,27 @@ public class Main {
         for (Map.Entry<String, Integer> val : grid.entrySet()) {
             System.out.println("Case " + val.getKey() + " : " + val.getValue());
         }
+        JFrame t = getFrame();
+        t.setVisible(true);
+    }
+
+    /*
+     * This function generate a JFrame and return it for display.
+     */
+    private static JFrame getFrame() {
+        JFrame t = new JFrame();
+        JPanel pan = new JPanel (new GridLayout(ROWS_HEAD.length, COLS_HEAD.length));
+        Border blackline = BorderFactory.createLineBorder(Color.black,1);
+        for(Map.Entry<String, Integer> cell : grid.entrySet()){
+            JPanel ptest = new JPanel();
+            ptest.setBorder(blackline);
+            ptest.setToolTipText(cell.getKey());
+            if(cell.getValue() == -1) ptest.setBackground(Color.RED);
+            pan.add(ptest);
+        }
+        pan.setBorder(blackline);
+        t.add(pan);
+        return t;
     }
 
     /*
