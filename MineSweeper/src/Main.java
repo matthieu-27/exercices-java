@@ -22,11 +22,19 @@ public class Main {
         }
 
         rollAndPlaceBomb();
-        for (Map.Entry<String, Integer> val : grid.entrySet()) {
-            System.out.println("Case " + val.getKey() + " : " + val.getValue());
+//        for (Map.Entry<String, Integer> val : grid.entrySet()) {
+//            System.out.println("Case " + val.getKey() + " : " + val.getValue());
+//        }
+
+        for (int i = 0; i < ROWS_HEAD.length + 1 ; i++) {
+            for (int j = 0; j < COLS_HEAD.length + 1; j++) {
+                StringBuilder str = new StringBuilder();
+                str.append("|_|");
+                System.out.print(str.toString());
+            }
+            System.out.println();
         }
-        JFrame t = getFrame();
-        t.setVisible(true);
+
     }
 
     /*
@@ -45,6 +53,7 @@ public class Main {
         }
         pan.setBorder(blackline);
         t.add(pan);
+        t.setSize(450,900);
         return t;
     }
 
@@ -58,5 +67,37 @@ public class Main {
         for (int i = 0; i < BOMBS; i++) {
             grid.put(gridCells.get(i), -1);
         }
+    }
+
+    /*
+     * This method does the opposite as getNameById
+     *
+     * @param name a String to be found grid.getKeys()
+     * @return an integer representing the cell id
+     */
+    private static int getIdByName(String name) {
+        // loop over idToName array
+        for (Map.Entry<String, Integer> entry : grid.entrySet()) {
+            if (entry.getKey().equals(name)) {
+                return entry.getValue();
+            }
+        }
+        return -1; // fix
+    }
+
+    /*
+     * This method does the opposite as getIdByName (lol)
+     *
+     * @param id an Integer representing the order of insertion in grid
+     * @return a String containing cell key value
+     */
+    private static String getNameById(int id) {
+        // loop over idToName array
+        for (Map.Entry<String, Integer> entry : grid.entrySet()) {
+            if (entry.getValue().equals(id)) {
+                return entry.getKey();
+            }
+        }
+        return ""; // fix
     }
 }
