@@ -49,7 +49,7 @@ public class Main {
     }
 
     /*
-     * This function shuffles gridCells and place bombs on them.
+     * This function shuffles gridCells and place bombs on grid for the BOMBS first cells.
      */
     private static void rollAndPlaceBomb() {
         // Mélange la liste des cellules
