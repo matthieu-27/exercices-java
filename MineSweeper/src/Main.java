@@ -24,7 +24,7 @@ public class Main {
     }
 
     /*
-     * This fonction shuffes gridCells and place bombs on them.
+     * This function shuffles gridCells and place bombs on them.
      */
     private static void rollAndPlaceBomb() {
         // Mélange la liste des cellules
