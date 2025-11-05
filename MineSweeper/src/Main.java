@@ -3,6 +3,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
     private static final int BOMBS = 9;
@@ -34,6 +35,7 @@ public class Main {
             }
             System.out.println();
         }
+        System.out.println(getNameById(1));
 
     }
 
@@ -86,18 +88,15 @@ public class Main {
     }
 
     /*
-     * This method does the opposite as getIdByName (lol)
+     * This method creates a temporary list to get an integer indexed element
      *
      * @param id an Integer representing the order of insertion in grid
      * @return a String containing cell key value
      */
     private static String getNameById(int id) {
-        // loop over idToName array
-        for (Map.Entry<String, Integer> entry : grid.entrySet()) {
-            if (entry.getValue().equals(id)) {
-                return entry.getKey();
-            }
-        }
-        return ""; // fix
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(grid.entrySet());
+
+        Map.Entry<String, Integer> entryAtIndex = entryList.get(id);
+        return entryAtIndex.getKey();
     }
 }
