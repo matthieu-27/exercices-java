@@ -33,6 +33,7 @@ public class Person {
         this.age = age;
         this.address = "unknown";
         this.bornCity = null;
+        personList.add(this);
     }
 
     public Person(String firstName, String lastName){
@@ -41,6 +42,7 @@ public class Person {
         this.age = 200;
         this.address = "unknown";
         this.bornCity = null;
+        personList.add(this);
     }
 
     public static ArrayList<Person> getPersonList() {
