@@ -2,17 +2,20 @@ public class City {
     private String name;
     private String country;
     private int population;
+    public static int instanceNumber = 0;
 
     public City(String name, String country, int population){
         this.name = name;
         this.country = country;
         this.population = checkPopulation(population);
+        instanceNumber++;
     }
 
     public City(String name, int population){
         this.name = name;
         this.country = "unknown";
         this.population = checkPopulation(population);
+        instanceNumber++;
     }
 
     private static int checkPopulation(int population){
@@ -51,8 +54,16 @@ public class City {
         this.population = checkPopulation(population);
     }
 
+    public void display(){
+        System.out.println("Ville de " + this.getName() +" en " + this.getCountry() + " ayant: " + this.getPopulation() + " habitants.");
+    }
+
     @Override
     public String toString() {
         return "[Ville:" + this.getName() + "] " + "[Pays:" + this.getCountry() + "] " +"[Population: " + this.getPopulation() + "]";
+    }
+
+    public static int getInstanceNumber() {
+        return instanceNumber;
     }
 }

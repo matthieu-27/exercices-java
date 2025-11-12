@@ -15,5 +15,7 @@ public class TestCity {
         // utilisation du deuxième constructeur
         City marseille = new City("Marseille", 500000);
         System.out.println(marseille + " ");
+        toulouse.display();
+        System.out.println(marseille.getInstanceNumber() + " instances");
     }
 }
