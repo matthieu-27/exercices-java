@@ -11,6 +11,13 @@ public class City {
         instanceNumber++;
     }
 
+    public City(String name, String country){
+        this.name = name;
+        this.country = country;
+        this.population = 0;
+        instanceNumber++;
+    }
+
     public City(String name, int population){
         this.name = name;
         this.country = "unknown";
@@ -57,6 +64,11 @@ public class City {
     public void display(){
         System.out.println("Ville de " + this.getName() +" en " + this.getCountry() + " ayant: " + this.getPopulation() + " habitants.");
     }
+
+    public String personDisplay() {
+       return "Ville de naissance: " + this.getName() + ", " + this.getCountry();
+    }
+
 
     @Override
     public String toString() {
