@@ -6,12 +6,25 @@ public class City {
     public City(String name, String country, int population){
         this.name = name;
         this.country = country;
+        this.population = checkPopulation(population);
+    }
+
+    public City(String name, int population){
+        this.name = name;
+        this.country = "unknown";
+        this.population = checkPopulation(population);
+    }
+
+    private static int checkPopulation(int population){
         // ici ont s'assure que la population de la ville n'est pas négative.
-        if(population < 0){
-            throw new RuntimeException("La population ne peux pas être négative");
-        }else{
-            this.population = population;
+        try {
+            if(population < 0){
+                throw new RuntimeException("La population ne peux pas être négative");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+        return population;
     }
 
     public String getName() {
@@ -35,16 +48,11 @@ public class City {
     }
 
     public void setPopulation(int population) {
-        // ici ont s'assure que la population de la ville n'est pas négative.
-        if(population < 0){
-            throw new RuntimeException("La population ne peux pas être négative");
-        } else {
-            this.population = population;
-        }
+        this.population = checkPopulation(population);
     }
 
     @Override
     public String toString() {
-        return "Nom:" + this.getName() + " Pays:" + this.getCountry() + " Population: " + this.getPopulation();
+        return "[Ville:" + this.getName() + "] " + "[Pays:" + this.getCountry() + "] " +"[Population: " + this.getPopulation() + "]";
     }
 }

@@ -8,12 +8,12 @@ public class TestCity {
         System.out.println(lyon + " ");
         toulouse.setPopulation(toulouse.getPopulation() + 20000);
         // essai de mettre une population négative
-        try {
-            toulouse.setPopulation(-300);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        toulouse.setPopulation(-300);
         toulouse.setPopulation(370000);
         System.out.println(toulouse + " ");
+
+        // utilisation du deuxième constructeur
+        City marseille = new City("Marseille", 500000);
+        System.out.println(marseille + " ");
     }
 }
