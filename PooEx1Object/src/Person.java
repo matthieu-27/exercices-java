@@ -1,24 +1,29 @@
+import java.util.ArrayList;
+
 public class Person {
     private String firstName;
     private String lastName;
     private int age;
     private String address;
-    private City city;
+    private City bornCity;
+    public static ArrayList<Person> personList = new ArrayList<>();
 
     public Person(String firstName, String lastName, int age, String address){
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.address = address;
-        this.city = null;
+        this.bornCity = null;
+        personList.add(this);
     }
 
-    public Person(String firstName, String lastName, int age, String address, City city){
+    public Person(String firstName, String lastName, int age, String address, City bornCity){
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.address = address;
-        this.city = city;
+        this.bornCity = bornCity;
+        personList.add(this);
     }
 
     public Person(String firstName, String lastName, int age){
@@ -26,7 +31,7 @@ public class Person {
         this.lastName = lastName;
         this.age = age;
         this.address = "unknown";
-        this.city = null;
+        this.bornCity = null;
     }
 
     public Person(String firstName, String lastName){
@@ -34,7 +39,21 @@ public class Person {
         this.lastName = lastName;
         this.age = 200;
         this.address = "unknown";
-        this.city = null;
+        this.bornCity = null;
+    }
+
+    public static ArrayList<Person> getPersonList() {
+        return personList;
+    }
+
+    public static ArrayList<Person> fromParis(ArrayList<Person> personList){
+        ArrayList<Person> result = new ArrayList<>();
+        for(Person person: personList){
+            if(person.getAddress().equalsIgnoreCase("paris") || person.getBornCity().getCountry().equalsIgnoreCase("france")){
+                result.add(person);
+            }
+        }
+        return result;
     }
 
     public String getFirstName() {
@@ -69,17 +88,17 @@ public class Person {
         this.address = adress;
     }
 
-    public City getCity() {
-        return city;
+    public City getBornCity() {
+        return bornCity;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setBornCity(City bornCity) {
+        this.bornCity = bornCity;
     }
 
     @Override
     public String toString(){
-        String city = this.getCity() != null ? this.getCity().personDisplay() : "null";
+        String city = this.getBornCity() != null ? this.getBornCity().personDisplay() : "null";
         return ("Person " + "[firstName=" + this.getFirstName() + ", lastName=" + this.getLastName() + ", age=" + this.getAge() + ", address=" + this.getAddress() +"]" + city);
     }
 }
