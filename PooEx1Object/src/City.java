@@ -6,7 +6,12 @@ public class City {
     public City(String name, String country, int population){
         this.name = name;
         this.country = country;
-        this.population = population;
+        // ici ont s'assure que la population de la ville n'est pas négative.
+        if(population < 0){
+            throw new RuntimeException("La population ne peux pas être négative");
+        }else{
+            this.population = population;
+        }
     }
 
     public String getName() {
@@ -30,7 +35,12 @@ public class City {
     }
 
     public void setPopulation(int population) {
-        this.population = population;
+        // ici ont s'assure que la population de la ville n'est pas négative.
+        if(population < 0){
+            throw new RuntimeException("La population ne peux pas être négative");
+        } else {
+            this.population = population;
+        }
     }
 
     @Override
