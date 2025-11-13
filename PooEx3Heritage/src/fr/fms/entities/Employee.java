@@ -10,6 +10,12 @@ public class Employee extends Person{
         this.salary = salary;
     }
 
+    public Employee(String firstName, String lastName, int age, String address, Capital capital ,String workingPlace, int salary){
+        super(firstName, lastName, age, address, capital);
+        this.workingPlace = workingPlace;
+        this.salary = salary;
+    }
+
     public String getWorkingPlace() {
         return workingPlace;
     }

@@ -8,6 +8,7 @@ public class Person {
     private String address;
     private City bornCity;
     public static ArrayList<Person> personList = new ArrayList<>();
+    private Capital capital;
 
     public Person(String firstName, String lastName, int age, String address){
         this.firstName = firstName;
@@ -15,6 +16,7 @@ public class Person {
         this.age = age;
         this.address = address;
         this.bornCity = null;
+        this.capital = null;
         personList.add(this);
     }
 
@@ -24,9 +26,19 @@ public class Person {
         this.age = age;
         this.address = address;
         this.bornCity = bornCity;
+        this.capital = null;
         personList.add(this);
     }
 
+    public Person(String firstName, String lastName, int age, String address, Capital capital){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.address = address;
+        this.bornCity = null;
+        this.capital = capital;
+        personList.add(this);
+    }
     public Person(String firstName, String lastName, int age){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -99,9 +111,18 @@ public class Person {
         this.bornCity = bornCity;
     }
 
+    public Capital getCapital() {
+        return capital;
+    }
+
+    public void setCapital(Capital capital) {
+        this.capital = capital;
+    }
+
     @Override
     public String toString(){
+        String capital = this.getCapital() != null ? this.getCapital().toString() : "null";
         String city = this.getBornCity() != null ? this.getBornCity().toString() : "null";
-        return (this.getFirstName() + ", " + this.getLastName() + ", " + this.getAge() + "ans, " + this.getAddress() +", " + city);
+        return (this.getFirstName() + ", " + this.getLastName() + ", " + this.getAge() + "ans, " + this.getAddress() +", " + (!capital.equalsIgnoreCase("null") ? capital : city));
     }
 }
