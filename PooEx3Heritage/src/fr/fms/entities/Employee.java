@@ -36,4 +36,13 @@ public class Employee extends Person{
     public String toString() {
         return super.toString() + " Entreprise: " + this.getWorkingPlace() + ", salaire: " + this.getSalary();
     }
+
+    @Override
+    public double calcIncome() throws EmployeeException {
+        double salary = this.getSalary() - (this.getSalary() * 0.2);
+        if(salary < 0){
+            throw new EmployeeException("Salaire inférieur a 0");
+        }
+        return salary;
+    }
 }

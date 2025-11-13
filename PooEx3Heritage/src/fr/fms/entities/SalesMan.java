@@ -2,6 +2,7 @@ package fr.fms.entities;
 
 public class SalesMan extends Person{
     private static double MIN_PERCENTAGE = 3.5;
+    private static double MIN_CA = 50000;
     private double percentageSalary;
     private String workPlace;
 
@@ -43,5 +44,14 @@ public class SalesMan extends Person{
     @Override
     public String toString() {
         return super.toString() + " Pourcentage CA: " + this.getPercentageSalary() + "%, Lieu de travail: " + this.getWorkPlace();
+    }
+
+    @Override
+    public double calcIncome() throws EmployeeException {
+        double salary = this.getPercentageSalary() * MIN_CA / 100;
+        if(salary < 0){
+            throw new EmployeeException("Salaire inférieur a 0");
+        }
+        return salary;
     }
 }

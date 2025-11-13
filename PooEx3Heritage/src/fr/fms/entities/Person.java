@@ -1,7 +1,7 @@
 package fr.fms.entities;
 import java.util.ArrayList;
 
-public class Person {
+public class Person extends AbstractPerson {
     private String firstName;
     private String lastName;
     private int age;
@@ -57,6 +57,8 @@ public class Person {
         personList.add(this);
     }
 
+
+
     public static ArrayList<Person> getPersonList() {
         return personList;
     }
@@ -69,6 +71,11 @@ public class Person {
             }
         }
         return result;
+    }
+
+    @Override
+    public double calcIncome() throws EmployeeException {
+        throw new EmployeeException("Impossible de calculer le salaire");
     }
 
     public String getFirstName() {
