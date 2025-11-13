@@ -101,7 +101,7 @@ public class Person {
 
     @Override
     public String toString(){
-        String city = this.getBornCity() != null ? this.getBornCity().personDisplay() : "null";
-        return ("Person " + "[firstName=" + this.getFirstName() + ", lastName=" + this.getLastName() + ", age=" + this.getAge() + ", address=" + this.getAddress() +"]" + city);
+        String city = this.getBornCity() != null ? this.getBornCity().toString() : "null";
+        return (this.getFirstName() + ", " + this.getLastName() + ", " + this.getAge() + "ans, " + this.getAddress() +", " + city);
     }
 }
