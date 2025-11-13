@@ -15,7 +15,7 @@ public class SalesMan extends Person{
         // ici ont s'assure que le pourcentage du salaire n'est pas négatif.
         try {
             if(salary < 0){
-                throw new RuntimeException("Le pourcentage du salaire de peux être négatif");
+                throw new RuntimeException("Le pourcentage du salaire ne peux être négatif");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

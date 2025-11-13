@@ -121,8 +121,7 @@ public class Person {
 
     @Override
     public String toString(){
-        String capital = this.getCapital() != null ? this.getCapital().toString() : "null";
-        String city = this.getBornCity() != null ? this.getBornCity().toString() : "null";
-        return (this.getFirstName() + ", " + this.getLastName() + ", " + this.getAge() + "ans, " + this.getAddress() +", " + (!capital.equalsIgnoreCase("null") ? capital : city));
+        String city = this.getBornCity() != null ? this.getBornCity().toString() : this.getCapital() != null ? this.getCapital().toString() : "null";
+        return (this.getFirstName() + ", " + this.getLastName() + ", " + this.getAge() + "ans, " + this.getAddress() +", " + city);
     }
 }
