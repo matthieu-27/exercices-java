@@ -17,8 +17,15 @@ public class TestEmployee {
         Person lele = new Person("Lenny", "Kravitz", 56, "hotel particulier a Paris", new City("NY", "USA"));
         Person lolo = new Person("Laurence", "Jennifer", 30, "Louisville, USA", new City("Indian Hills", "USA"));
         ArrayList<Person> personList = Person.getPersonList();
+        // on triche en parcourant les objets de toutes les personnes instanciées.
         for(Person p: personList){
-            System.out.println(p.toString());
+            // Si c'est une capitale qui le définit : c'est un employé.
+            // Si le nom de sa ville de naissance est Pretoria ou Paris
+            // et que si paris ça contient bien 20000000 d'habitants (Enlève Sarkozy).
+            // C'est que c'est un employé ou un commercial
+            if(p.getCapital() != null || p.getBornCity() != null && (p.getBornCity().getName().equalsIgnoreCase("pretoria") || (p.getBornCity().getName().equalsIgnoreCase("paris") && p.getBornCity().getPopulation() == 2000000))){
+                System.out.println(p);
+            }
         }
 
     }

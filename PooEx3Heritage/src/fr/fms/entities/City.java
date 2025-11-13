@@ -74,7 +74,7 @@ public class City {
 
     @Override
     public String toString() {
-        return "Ville de naissance: " + this.getName() + ", " + this.getCountry() + " , " + this.getPopulation() + " d'habitants.";
+        return "Ville de naissance: " + this.getName() + ", " + this.getCountry();
     }
 
     public static int getInstanceNumber() {
