@@ -18,15 +18,14 @@ public class Vegetable extends Product implements Consumable {
         int productShelfLifeDays = this.shelfLifeDays;
 
         LocalDate productMaxDate = productPickingDate.plusDays((long) productShelfLifeDays);
-
+        int daysBeforeExpiration = todayDate.until(productMaxDate).getDays();
         if(productMaxDate.isBefore(todayDate)){
             System.out.println("Produit périmé");
         } else if (productMaxDate.equals(todayDate)) {
             System.out.println("Dernier jour avant péremption");
         } else {
-            System.out.println("Il reste " + todayDate.until(productMaxDate).getDays() +" jours avant péremption");
+            System.out.println(this.name + ": Il reste " + daysBeforeExpiration + (daysBeforeExpiration > 1 ? " jours" : " jour") +" avant péremption");
         }
-
     }
 
     @Override
