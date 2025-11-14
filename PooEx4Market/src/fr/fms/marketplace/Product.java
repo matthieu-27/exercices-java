@@ -29,7 +29,7 @@ public abstract class Product {
             throw new Exception("La quantité désirée n'est pas disponible");
         } else {
             product.stockQuantity = (productQuantity - desiredQuantity);
-            System.out.println("-- Achat de " + desiredQuantity + " " + (desiredQuantity > 1 ?  name + "s" : name) + "---");
+            System.out.println("--- Achat de " + desiredQuantity + " " + (desiredQuantity > 1 ?  name + "s" : name) + " ---");
         }
 
     }
