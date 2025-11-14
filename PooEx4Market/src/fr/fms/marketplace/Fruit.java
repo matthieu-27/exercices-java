@@ -5,18 +5,8 @@ import java.time.ZoneId;
 
 public class Fruit extends Product implements Consumable{
 
-    private String name;
-    private double unitPrice;
-    private String unit;
-    private LocalDate pickingDate;
-    private int shelfLifeDays;
-
-    public Fruit(String name, double unitPrice, String unit, LocalDate pickingDate, int shelfLifeDays){
-        this.name = name;
-        this.unitPrice = unitPrice;
-        this.unit = unit;
-        this.pickingDate = pickingDate;
-        this.shelfLifeDays = shelfLifeDays;
+    public Fruit(String name, double unitPrice, String unit, double stockQuantity, LocalDate pickingDate, int shelfLifeDays){
+        super(name, unitPrice, unit, stockQuantity, pickingDate, shelfLifeDays);
     }
 
     @Override
