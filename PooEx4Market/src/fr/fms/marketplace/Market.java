@@ -7,8 +7,9 @@ public class Market {
         Vegetable tomate = new Vegetable("Tomate", 10, "kg", 30, LocalDate.now(), 30);
         Fruit fraise = new Fruit("Fraise", 10, "kg", 30, LocalDate.now(), 30);
         try {
-            tomate.buyProduct(tomate, 5);
-            tomate.buyProduct(tomate, 35);
+            Product.buyProduct(tomate, 5);
+            Product.buyProduct(fraise, 1);
+            Product.buyProduct(tomate, 35);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

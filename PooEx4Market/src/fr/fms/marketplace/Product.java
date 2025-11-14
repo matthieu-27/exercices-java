@@ -22,13 +22,13 @@ public abstract class Product {
 
    public abstract void calculateExpirationDate();
 
-    public void buyProduct(Product product, double desiredQuantity) throws Exception{
+    static void buyProduct(Product product, double desiredQuantity) throws Exception{
         double productQuantity = product.stockQuantity;
         String name = product.name;
         if(desiredQuantity > productQuantity){
             throw new Exception("La quantité désirée n'est pas disponible");
         } else {
-            product.stockQuantity = (productQuantity - stockQuantity);
+            product.stockQuantity = (productQuantity - desiredQuantity);
             System.out.println("Achat de " + desiredQuantity + " " + (desiredQuantity > 1 ?  name + "s" : name));
         }
 
