@@ -24,7 +24,7 @@ public class Vegetable extends Product implements Consumable {
         } else if (productMaxDate.equals(todayDate)) {
             System.out.println("Dernier jour avant péremption");
         } else {
-            System.out.println("Il reste " + productMaxDate.minusDays((long) shelfLifeDays) +" jours avant péremption");
+            System.out.println("Il reste " + todayDate.until(productMaxDate).getDays() +" jours avant péremption");
         }
 
     }

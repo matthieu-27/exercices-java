@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Market {
     public static void main(String[] args) {
-        Vegetable tomate = new Vegetable("Tomate", 10, "kg", 30, LocalDate.now().minusMonths((long) 1), 31);
+        Vegetable tomate = new Vegetable("Tomate", 10, "kg", 30, LocalDate.now().minusMonths((long) 1), 35);
         Fruit fraise = new Fruit("Fraise", 10, "kg", 30, LocalDate.now(), 30);
         try {
             Product.buyProduct(tomate, 5);

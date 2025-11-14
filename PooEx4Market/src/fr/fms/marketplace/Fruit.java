@@ -26,14 +26,22 @@ public class Fruit extends Product implements Consumable{
 
     @Override
     public void calculateExpirationDate() {
-        // create a clock
-        ZoneId zid = ZoneId.of("Europe/Paris");
+        // create LocalDate object using now()
+        LocalDate todayDate = LocalDate.now();
 
-        // create an LocalDate object using now(zoneId)
-        LocalDate lt = LocalDate.now(zid);
+        // get object pickingDate and shelfLifeDays
+        LocalDate productPickingDate = this.pickingDate;
+        int productShelfLifeDays = this.shelfLifeDays;
 
-        // print result
-        System.out.println("LocalDate : " + lt);
-        System.out.println();
+        LocalDate productMaxDate = productPickingDate.plusDays((long) productShelfLifeDays);
+
+        if(productMaxDate.isBefore(todayDate)){
+            System.out.println("Produit périmé");
+        } else if (productMaxDate.equals(todayDate)) {
+            System.out.println("Dernier jour avant péremption");
+        } else {
+            System.out.println("Il reste " + todayDate.until(productMaxDate).getDays() +" jours avant péremption");
+        }
+
     }
 }
